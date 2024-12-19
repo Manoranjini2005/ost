@@ -1,0 +1,116 @@
+
+$ mvn archetype:generate -DgroupId=lab.ost.csvproj -DartifactId=csv-project
+archetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+<modules>
+<module>data-ingestion</module>
+<module>transformation</module>
+<module>data-storage</module>
+<module>data-analytics</module>
+</modules>
+
+
+$ mvn archetype:generate -DgroupId=lab.ost.csvproj -DartifactId=<module-name> -
+DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+<parent>
+<groupId>lab.ost.csvproject</groupId>
+<artifactId>csv-project</artifactId>
+<version>1.0</version>
+</parent>
+
+
+1. Data Ingestion Module (DataIngestion.java):
+
+Reads and parses a CSV file.
+package com.example.dataengineering.ingestion;
+import java.io.*;
+import java.util.*;
+public class DataIngestion {
+public List<String[]> readCSV(String filePath) {
+List<String[]> data = new ArrayList<>();
+try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+String header = br.readLine(); // Skip header
+String line;
+while ((line = br.readLine()) != null) {
+data.add(line.split(","));
+}
+} catch (IOException e) {
+e.printStackTrace();
+}
+return data;
+}
+}
+
+
+2. Data Transformation Module (DataTransformation.java):
+
+Filters rows based on criteria.
+package com.example.dataengineering.transformation;
+import java.util.*;
+public class DataTransformation {
+public List<String[]> filterByCountry(List<String[]> data, String country) {
+return data.stream()
+.filter(row -> row[2].equalsIgnoreCase(country))
+.collect(Collectors.toList());
+}
+}
+
+
+3. Data Storage Module (DataStorage.java):
+
+Writes processed data to a file.
+package com.example.dataengineering.storage;
+import java.io.*;
+import java.util.*;
+public class DataStorage {
+public void writeCSV(List<String[]> data, String outputPath) {
+try (FileWriter writer = new FileWriter(outputPath)) {
+for (String[] row : data) {
+writer.append(String.join(",", row)).append("\n");
+}
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+
+
+4. Data Analytics Module (DataAnalytics.java):
+
+Computes analytical metrics.
+package com.example.dataengineering.analytics;
+import java.util.*;
+public class DataAnalytics {
+public double calculateAverageSalary(List<String[]> data) {
+return data.stream()
+.mapToDouble(row -> Double.parseDouble(row[4]))
+.average()
+.orElse(0);
+}
+}
+5. Main Class (Main.java):
+Integrates all modules.
+package com.example;
+import com.example.dataengineering.ingestion.*;
+import com.example.dataengineering.transformation.*;
+import com.example.dataengineering.storage.*;
+import com.example.dataengineering.analytics.*;
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+String inputFile = "data/input.csv";
+String outputFile = "data/output.csv";
+DataIngestion ingestion = new DataIngestion();
+DataTransformation transformation = new DataTransformation();
+DataStorage storage = new DataStorage();
+DataAnalytics analytics = new DataAnalytics();
+List<String[]> data = ingestion.readCSV(inputFile);
+List<String[]> filteredData = transformation.filterByCountry(data, "USA");
+storage.writeCSV(filteredData, outputFile);
+double avgSalary = analytics.calculateAverageSalary(filteredData);
+System.out.println("Average Salary in the USA: $" + avgSalary);
+}
+}

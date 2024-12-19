@@ -1,0 +1,52 @@
+MAVEN 
+
+
+
+java -version
+sudo apt update
+sudo apt install default-jdk
+java -version
+
+
+mvn -version
+sudo apt update
+sudo apt install maven
+mvn -version
+
+
+cd /path/to/your/workspace
+
+mvn archetype:generate -DgroupId=com.example -DartifactId=myproject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+cd myproject
+
+mvn compile
+
+mvn exec:java -Dexec.mainClass="com.example.App"
+
+mvn package
+
+java -jar target/myproject-1.0-SNAPSHOT.jar
+
+
+
+
+adding dependencies 
+
+nano pom.xml
+
+<dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+
+
+mvn clean install
+
+mvn clean
+
+

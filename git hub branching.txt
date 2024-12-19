@@ -1,0 +1,22 @@
+git token
+
+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
+
+
+mkdir ostlab
+cd ostlab
+
+git clone
+
+git init
+git checkout -b b1
+touch file1.txt
+git add file1.txt
+git commit -m "committed"
+git branch 
+
+git remote add origin https;//token@url
+git remote -v 
+git push origin b1
+
+
