@@ -1,3 +1,21 @@
+###########closure 
+var number = 10
+ val addnumber = (x: Int) => x + number
+ println(addnumber(5))
+ number = 20
+ println(addnumber(5))
+########## expression
+val result = if (5 > 3) "Greater" else "Lesser"
+ println(result)
+#########anonymous
+val add = (x: Int, y: Int) => x + y
+ println(add(3, 4))
+############currying
+def multiply(x: Int)(y: Int): Int = x * y
+ val multiplyBy2 = multiply(2) _
+ println(multiplyBy2(5))
+
+
 ##############handling multiple nexception
 object MultipleExceptionsExample {
   def main(args: Array[String]): Unit = {
@@ -11,7 +29,7 @@ object MultipleExceptionsExample {
   }
 }
 
-########If else
+######## If else
 object IfElseExample {
   def main(args: Array[String]): Unit = {
     println("Enter a number:")
@@ -26,7 +44,7 @@ object IfElseExample {
     }
   }
 }
-#############Grade calculation using using else if ladder
+############# Grade calculation using using else if ladder
 object GradeCalculator {
   def main(args: Array[String]): Unit = {
     println("Enter your marks (out of 100):")
