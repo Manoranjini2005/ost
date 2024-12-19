@@ -1,0 +1,310 @@
+##############handling multiple nexception
+object MultipleExceptionsExample {
+  def main(args: Array[String]): Unit = {
+    try {
+      val result = args(0).toInt / 0  // Will throw ArrayIndexOutOfBoundsException or ArithmeticException
+    } catch {
+      case e: ArrayIndexOutOfBoundsException => println("No command-line argument provided!")
+      case e: ArithmeticException => println("Cannot divide by zero!")
+      case e: Exception => println(s"An unexpected error occurred: ${e.getMessage}")
+    }
+  }
+}
+
+########If else
+object IfElseExample {
+  def main(args: Array[String]): Unit = {
+    println("Enter a number:")
+    val number = scala.io.StdIn.readInt()
+
+    if (number > 0) {
+      println(s"$number is positive.")
+    } else if (number < 0) {
+      println(s"$number is negative.")
+    } else {
+      println(s"$number is zero.")
+    }
+  }
+}
+#############Grade calculation using using else if ladder
+object GradeCalculator {
+  def main(args: Array[String]): Unit = {
+    println("Enter your marks (out of 100):")
+    val marks = scala.io.StdIn.readInt()
+
+    if (marks >= 90) {
+      println("Grade: A")
+    } else if (marks >= 80) {
+      println("Grade: B")
+    } else if (marks >= 70) {
+      println("Grade: C")
+    } else if (marks >= 60) {
+      println("Grade: D")
+    } else if (marks >= 50) {
+      println("Grade: E")
+    } else {
+      println("Grade: F (Fail)")
+    }
+  }
+}
+
+########while
+object WhileExample {
+  def main(args: Array[String]): Unit = {
+    var i = 1
+    while (i <= 5) {
+      println(s"Count: $i")
+      i += 1
+    }
+  }
+}
+
+
+##########do while
+object DoWhileExample {
+  def main(args: Array[String]): Unit = {
+    var i = 1
+    do {
+      println(s"Count: $i")
+      i += 1
+    } while (i <= 5)
+  }
+}
+
+###########break and continue
+import scala.util.control.Breaks._
+
+object BreakExample {
+  def main(args: Array[String]): Unit = {
+    breakable {
+      for (i <- 1 to 10) {
+        if (i == 5) break // Exit the loop
+        println(i)
+      }
+    }
+  }
+}
+
+import scala.util.control.Breaks
+
+object BreakExample {
+  def main(args: Array[String]): Unit = {
+    val loopBreaker = new Breaks
+    loopBreaker.breakable {
+      for (i <- 1 to 10) {
+        if (i == 5) loopBreaker.break() // Exit the loop
+        println(i)
+      }
+    }
+  }
+}
+
+############continue
+import scala.util.control.Breaks._
+
+object ContinueExample {
+  def main(args: Array[String]): Unit = {
+    for (i <- 1 to 10) {
+      breakable {
+        if (i % 2 == 0) break // Skip even numbers (mimics 'continue')
+        println(i)
+      }
+    }
+  }
+}
+
+#############break
+import scala.util.control.Breaks._
+
+object BreakExample {
+  def main(args: Array[String]): Unit = {
+    breakable {
+      for (i <- 1 to 10) {
+        if (i == 5) break // Exit the loop when i equals 5
+        println(i)
+      }
+    }
+    println("Loop exited")
+  }
+}
+
+###########simple pattern matching
+object PatternMatchExample {
+  def main(args: Array[String]): Unit = {
+    val x = 5
+    x match {
+      case 1 => println("One")
+      case 2 => println("Two")
+      case 5 => println("Five")
+      case _ => println("Other number")
+    }
+  }
+}
+
+
+##################matching with data types
+object PatternMatchExample {
+  def main(args: Array[String]): Unit = {
+    val obj: Any = 42
+
+    obj match {
+      case s: String => println(s"String of length: ${s.length}")
+      case i: Int => println(s"Integer value: $i")
+      case _ => println("Unknown type")
+    }
+  }
+}
+
+###########pattern match with tuples
+object TuplePatternMatch {
+  def main(args: Array[String]): Unit = {
+    val tuple = (1, "hello")
+
+    tuple match {
+      case (1, "hello") => println("Matched the first case!")
+      case (x, y) => println(s"Matched a tuple: ($x, $y)")
+    }
+  }
+}
+
+
+################matching with lists
+object ListPatternMatch {
+  def main(args: Array[String]): Unit = {
+    val list = List(1, 2, 3)
+
+    list match {
+      case Nil => println("Empty List")
+      case head :: tail => println(s"Head: $head, Tail: $tail")
+    }
+  }
+}
+
+###############guard conditions in pattern
+object PatternMatchWithGuard {
+  def main(args: Array[String]): Unit = {
+    val x = 15
+
+    x match {
+      case y if y % 2 == 0 => println(s"$y is even")
+      case y if y % 2 != 0 => println(s"$y is odd")
+    }
+  }
+}
+
+########### using throw exception 
+object ThrowExample {
+  def checkEvenNumber(number: Int): Unit = {
+    if (number % 2 != 0) {
+      throw new IllegalArgumentException("Number is not even!")
+    }
+    println(s"$number is even!")
+  }
+
+  def main(args: Array[String]): Unit = {
+    try {
+      checkEvenNumber(3)  // Throws an exception
+    } catch {
+      case e: IllegalArgumentException => println(s"Exception caught: ${e.getMessage}")
+    }
+  }
+}
+
+######## array input from user
+import scala.io.StdIn
+
+object ArrayInputExample {
+  def main(args: Array[String]): Unit = {
+    // Ask the user to input the array elements
+    println("Enter the number of elements:")
+    val n = StdIn.readInt()  // Read the number of elements
+
+    // Initialize an array of size n
+    val arr = new Array[Int](n)
+
+    // Read each element from the user
+    println(s"Enter $n elements:")
+    for (i <- 0 until n) {
+      arr(i) = StdIn.readInt()  // Read the integer and store it in the array
+    }
+
+    // Print the array
+    println("The array entered is:")
+    arr.foreach(println)  // Prints each element of the array
+  }
+}
+
+########### method returning a value
+object MethodExample {
+  def square(x: Int): Int = {
+    x * x  // Returns the square of the number
+  }
+
+  def main(args: Array[String]): Unit = {
+    val result = square(5)  // Calling the method with an argument
+    println(s"The square of 5 is: $result")
+  }
+}
+
+####### method with default paramter
+object MethodExample {
+  def greet(name: String = "Guest"): Unit = {
+    println(s"Hello, $name!")
+  }
+
+  def main(args: Array[String]): Unit = {
+    greet()        // Uses the default value ("Guest")
+    greet("Alice") // Uses the provided value ("Alice")
+  }
+}
+  ################ method with no return
+
+object MethodExample {
+  def multiply(a: Int, b: Int): Int = {
+    a * b  // No need for 'return', this is automatically returned
+  }
+
+  def main(args: Array[String]): Unit = {
+    val product = multiply(4, 3)  // Calling the method
+    println(s"The product is: $product")
+  }
+}
+
+######### method with parameters
+object MethodExample {
+  def add(a: Int, b: Int): Int = {
+    return a + b
+  }
+
+  def main(args: Array[String]): Unit = {
+    val sum = add(5, 10)  // Calling the method with arguments
+    println(s"The sum is: $sum")
+  }
+}
+
+################## method w/o parameters
+object MethodExample {
+  def greet(): Unit = {
+    println("Hello, welcome to Scala!")
+  }
+
+  def main(args: Array[String]): Unit = {
+    greet()  // Calling the method
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
