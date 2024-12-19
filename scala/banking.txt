@@ -1,0 +1,24 @@
+// Class to represent a simple Bank Account
+class BankAccount(var balance: Double) {
+  // Method to deposit money
+  def deposit(amount: Double): Unit = {
+    balance += amount
+    println(s"Deposited $$${amount}. Current balance: $$${balance}")
+  }
+
+  // Method to withdraw money
+  def withdraw(amount: Double): Unit = {
+    if (amount <= balance) {
+      balance -= amount
+      println(s"Withdrew $$${amount}. Current balance: $$${balance}")
+    } else {
+      println("Insufficient funds!")
+    }
+  }
+}
+
+// Create a new BankAccount object
+val account = new BankAccount(1000)
+account.deposit(500)  // Expected output: Deposited $500. Current balance: $1500
+account.withdraw(200)  // Expected output: Withdrew $200. Current balance: $1300
+account.withdraw(1500)  // Expected output: Insufficient funds!

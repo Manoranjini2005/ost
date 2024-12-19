@@ -1,0 +1,8 @@
+object PyramidPattern {
+  def main(args: Array[String]): Unit = {
+    val height = 5
+    for (i <- 1 to height) {
+      println(" " * (height - i) + "*" * (2 * i - 1))
+    }
+  }
+}

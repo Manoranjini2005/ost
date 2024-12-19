@@ -1,0 +1,19 @@
+// Class with primary and auxiliary constructors
+class Person(val name: String, val age: Int) {
+  // Auxiliary constructor
+  def this(name: String) = {
+    this(name, 0) // Call primary constructor with default age
+  }
+
+  def greet(): Unit = {
+    println(s"Hello, my name is $name and I am $age years old.")
+  }
+}
+
+// Create an instance using the auxiliary constructor
+val person1 = new Person("John")
+person1.greet()  // Expected output: Hello, my name is John and I am 0 years old.
+
+// Create an instance using the primary constructor
+val person2 = new Person("Alice", 30)
+person2.greet()  // Expected output: Hello, my name is Alice and I am 30 years old.

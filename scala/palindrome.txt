@@ -1,0 +1,9 @@
+// Function to check if a string is a palindrome
+def isPalindrome(str: String): Boolean = {
+  val cleanedStr = str.replaceAll("[^A-Za-z0-9]", "").toLowerCase
+  cleanedStr == cleanedStr.reverse
+}
+
+// Test the function
+println(isPalindrome("A man, a plan, a canal, Panama"))  // Expected output: true
+println(isPalindrome("Hello"))  // Expected output: false

@@ -1,0 +1,22 @@
+object SimpleCalculator {
+  def main(args: Array[String]): Unit = {
+    println("Enter first number:")
+    val num1 = scala.io.StdIn.readDouble()
+    
+    println("Enter second number:")
+    val num2 = scala.io.StdIn.readDouble()
+
+    println("Select operation (+, -, *, /):")
+    val operator = scala.io.StdIn.readChar()
+
+    val result = operator match {
+      case '+' => num1 + num2
+      case '-' => num1 - num2
+      case '*' => num1 * num2
+      case '/' => if (num2 != 0) num1 / num2 else "Division by zero error"
+      case _ => "Invalid operator"
+    }
+
+    println(s"Result: $result")
+  }
+}

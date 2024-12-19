@@ -1,0 +1,13 @@
+def toBinary(n: Int): String = {
+  @annotation.tailrec
+  def convert(num: Int, binary: String): String = {
+    if (num == 0) binary
+    else convert(num / 2, (num % 2).toString + binary)
+  }
+  
+  if (n == 0) "0" else convert(n, "")
+}
+
+// Test the function
+println(toBinary(10))  // Expected output: "1010"
+println(toBinary(0))   // Expected output: "0"

@@ -1,0 +1,7 @@
+// Function with closure
+def multiplyBy(factor: Int): Int => Int = {
+  (x: Int) => x * factor // `factor` is captured by the closure
+}
+
+val multiplyBy2 = multiplyBy(2)
+println(multiplyBy2(10))  // Expected output: 20

@@ -1,0 +1,12 @@
+def reverseString(str: String): String = {
+  @annotation.tailrec
+  def reverseHelper(input: String, result: String): String = {
+    if (input.isEmpty) result
+    else reverseHelper(input.tail, input.head + result)
+  }
+  
+  reverseHelper(str, "")
+}
+
+// Test the function
+println(reverseString("Scala"))  // Expected output: "alcS"

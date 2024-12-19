@@ -1,0 +1,5 @@
+// Loop through a range of numbers
+for (i <- 1 to 5) {
+  println(i)
+}
+// Expected output: 1 2 3 4 5

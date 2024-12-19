@@ -1,0 +1,7 @@
+object RemoveWhitespace {
+  def main(args: Array[String]): Unit = {
+    val input = "Hello Scala World"
+    val result = input.replaceAll("\\s", "")
+    println(s"Without whitespaces: $result")
+  }
+}

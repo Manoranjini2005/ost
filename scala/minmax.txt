@@ -1,0 +1,9 @@
+// Function to find the maximum and minimum of a list
+def findMaxMin(nums: List[Int]): (Int, Int) = {
+  (nums.max, nums.min)
+}
+
+// Test the function
+val numbers = List(10, 5, 22, 17, 3)
+val (max, min) = findMaxMin(numbers)
+println(s"Max: $max, Min: $min")  // Expected output: Max: 22, Min: 3

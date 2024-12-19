@@ -1,0 +1,19 @@
+import scala.io.StdIn.readLine
+
+// Function to perform division with error handling for user input
+def userInputDivision(): Unit = {
+  try {
+    println("Enter the numerator:")
+    val numerator = readLine().toInt
+    println("Enter the denominator:")
+    val denominator = readLine().toInt
+    val result = numerator / denominator
+    println(s"Result of division: $result")
+  } catch {
+    case e: NumberFormatException => println("Error: Please enter valid integers.")
+    case e: ArithmeticException => println("Error: Division by zero is not allowed.")
+  }
+}
+
+// Test the function
+userInputDivision()

@@ -1,0 +1,12 @@
+// Trait definition
+trait Speak {
+  def speak(): Unit = println("I can speak!")
+}
+
+class Dog extends Speak {
+  def bark(): Unit = println("Woof!")
+}
+
+val dog = new Dog
+dog.speak()  // Expected output: I can speak!
+dog.bark()   // Expected output: Woof!

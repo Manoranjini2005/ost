@@ -1,0 +1,24 @@
+def mergeSortedArrays(arr1: Array[Int], arr2: Array[Int]): Array[Int] = {
+  var i = 0
+  var j = 0
+  var result = Array[Int]()
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1(i) < arr2(j)) {
+      result :+= arr1(i)
+      i += 1
+    } else {
+      result :+= arr2(j)
+      j += 1
+    }
+  }
+
+  // Add remaining elements of arr1 or arr2
+  result ++= arr1.slice(i, arr1.length)
+  result ++= arr2.slice(j, arr2.length)
+
+  result
+}
+
+// Test the function
+println(mergeSortedArrays(Array(1, 3, 5), Array(2, 4, 6)).mkString(", "))  // Expected output: 1, 2, 3, 4, 5, 6

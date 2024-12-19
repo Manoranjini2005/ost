@@ -1,0 +1,9 @@
+// Singleton object
+object MathUtils {
+  def add(x: Int, y: Int): Int = x + y
+  def multiply(x: Int, y: Int): Int = x * y
+}
+
+// Access methods from singleton object
+println(MathUtils.add(2, 3))      // Expected output: 5
+println(MathUtils.multiply(2, 3)) // Expected output: 6

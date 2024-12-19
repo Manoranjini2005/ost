@@ -1,0 +1,7 @@
+object CharCounter {
+  def main(args: Array[String]): Unit = {
+    val input = "scala programming"
+    val count = input.count(_ == 'a')
+    println(s"Occurrences of 'a': $count")
+  }
+}

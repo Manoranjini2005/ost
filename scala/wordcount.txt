@@ -1,0 +1,7 @@
+def wordCount(words: List[String]): Map[String, Int] = {
+  words.groupBy(identity).view.mapValues(_.size).toMap
+}
+
+// Test the function
+println(wordCount(List("apple", "banana", "apple", "orange", "banana", "apple")))  
+// Expected output: Map(apple -> 3, banana -> 2, orange -> 1)

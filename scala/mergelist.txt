@@ -1,0 +1,12 @@
+def mergeSortedLists(list1: List[Int], list2: List[Int]): List[Int] = {
+  (list1, list2) match {
+    case (Nil, _) => list2
+    case (_, Nil) => list1
+    case (x :: xs, y :: ys) =>
+      if (x < y) x :: mergeSortedLists(xs, list2)
+      else y :: mergeSortedLists(list1, ys)
+  }
+}
+
+// Test the function
+println(mergeSortedLists(List(1, 3, 5), List(2, 4, 6)))  // Expected output: List(1, 2, 3, 4, 5, 6)

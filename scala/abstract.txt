@@ -1,0 +1,11 @@
+// Abstract class definition
+abstract class Animal {
+  def sound(): Unit
+}
+
+class Dog extends Animal {
+  def sound(): Unit = println("Woof!")
+}
+
+val dog = new Dog
+dog.sound()  // Expected output: Woof!

@@ -1,0 +1,3 @@
+// Expression returning a value based on the condition
+val result = if (5 > 3) "Greater" else "Smaller"
+println(result)  // Expected output: Greater

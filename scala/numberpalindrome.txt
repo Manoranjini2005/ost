@@ -1,0 +1,17 @@
+def isPalindrome(n: Int): Boolean = {
+  val original = n
+  var reversed = 0
+  var num = n
+  
+  while (num > 0) {
+    val digit = num % 10
+    reversed = reversed * 10 + digit
+    num = num / 10
+  }
+  
+  original == reversed
+}
+
+// Test the function
+println(isPalindrome(121))  // Expected output: true
+println(isPalindrome(123))  // Expected output: false

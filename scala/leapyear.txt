@@ -1,0 +1,9 @@
+object LeapYearChecker {
+  def main(args: Array[String]): Unit = {
+    val year = 2024
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) 
+      println(s"$year is a leap year.")
+    else 
+      println(s"$year is not a leap year.")
+  }
+}

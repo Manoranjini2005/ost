@@ -1,0 +1,10 @@
+object SwapNumbers {
+  def main(args: Array[String]): Unit = {
+    var a = 5
+    var b = 10
+    a = a + b
+    b = a - b
+    a = a - b
+    println(s"After swapping: a = $a, b = $b")
+  }
+}

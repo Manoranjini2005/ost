@@ -1,0 +1,7 @@
+object TemperatureConverter {
+  def main(args: Array[String]): Unit = {
+    val celsius = 25
+    val fahrenheit = (celsius * 9/5) + 32
+    println(s"$celsius°C = $fahrenheit°F")
+  }
+}

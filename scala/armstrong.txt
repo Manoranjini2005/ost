@@ -1,0 +1,8 @@
+object ArmstrongChecker {
+  def main(args: Array[String]): Unit = {
+    val number = 153
+    val sum = number.toString.map(_.asDigit).map(math.pow(_, 3)).sum
+    if (sum == number) println(s"$number is an Armstrong number.")
+    else println(s"$number is not an Armstrong number.")
+  }
+}

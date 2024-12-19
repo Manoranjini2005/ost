@@ -1,0 +1,7 @@
+object VowelCounter {
+  def main(args: Array[String]): Unit = {
+    val input = "Hello Scala"
+    val count = input.count(c => "aeiou".contains(c.toLower))
+    println(s"Number of vowels: $count")
+  }
+}

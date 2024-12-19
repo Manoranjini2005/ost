@@ -1,0 +1,13 @@
+// Function to calculate the sum of digits of a number
+def sumOfDigits(n: Int): Int = {
+  var num = n
+  var sum = 0
+  while (num > 0) {
+    sum += num % 10
+    num /= 10
+  }
+  sum
+}
+
+// Test the function
+println(sumOfDigits(12345)) // Expected output: 15

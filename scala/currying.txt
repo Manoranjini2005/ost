@@ -1,0 +1,5 @@
+// Curried function to add two numbers
+def add(x: Int)(y: Int): Int = x + y
+
+// Testing curried function
+println(add(5)(3))  // Expected output: 8

@@ -1,0 +1,13 @@
+// Function to calculate factorial using a while loop
+def factorialWhileLoop(n: Int): Int = {
+  var result = 1
+  var i = n
+  while (i > 0) {
+    result *= i
+    i -= 1
+  }
+  result
+}
+
+// Test the function
+println(factorialWhileLoop(5)) // Expected output: 120

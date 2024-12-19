@@ -1,0 +1,8 @@
+// Function to calculate factorial using recursion
+def factorial(n: Int): Int = {
+  if (n <= 1) 1
+  else n * factorial(n - 1)
+}
+
+// Test the function
+println(factorial(5)) // Expected output: 120

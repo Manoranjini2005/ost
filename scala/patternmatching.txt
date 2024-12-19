@@ -1,0 +1,21 @@
+// Function with pattern matching for exception handling
+def divide(a: Int, b: Int): Int = {
+  try {
+    a / b
+  } catch {
+    case e: ArithmeticException =>
+      println("Error: Division by zero")
+      -1
+    case e: NullPointerException =>
+      println("Error: Null pointer exception")
+      -2
+    case e: Exception =>
+      println(s"Unknown error: ${e.getMessage}")
+      -3
+  }
+}
+
+// Testing the function
+println(divide(10, 0))  // Expected output: Error: Division by zero and -1
+println(divide(10, 2))  // Expected output: 5
+println(divide(10, null.asInstanceOf[Int]))  // Expected output: Error: Null pointer exception and -2

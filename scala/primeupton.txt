@@ -1,0 +1,16 @@
+// Function to check if a number is prime
+def isPrime(n: Int): Boolean = {
+  if (n <= 1) return false
+  for (i <- 2 to Math.sqrt(n).toInt) {
+    if (n % i == 0) return false
+  }
+  true
+}
+
+// Function to find all primes up to n
+def primesUpTo(n: Int): List[Int] = {
+  (2 to n).filter(isPrime).toList
+}
+
+// Test the function
+println(primesUpTo(30))  // Expected output: List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
